@@ -22,7 +22,8 @@ window.addEventListener('load', function() {
 	
 	var spremeniBarvo = function(id) {
 		document.getElementById("stroboskop").style.backgroundColor = "#"+vrednosti[id];
-
+		var novId;
+		var timeout;
 		if (ustavi) {
 			ustavi = false;
 		} else {
@@ -43,14 +44,15 @@ window.addEventListener('load', function() {
 	
 	var zagon = function(event) {
 		vrednosti = [];
+		var i;
 		var barve = document.querySelectorAll("#barve > button");
 		for (i = 0; i < barve.length; i++) {
 			var barva = barve[i];
 			vrednosti.push(barva.innerHTML);
 		}
 		
-		minCas = 1000;
-		maxCas = 1000;
+		minCas = document.getElementById("min").value;
+		maxCas = document.getElementById("max").value;
 		spremeniBarvo(0);
 		
 		var start = document.querySelector("#start");
